@@ -1,5 +1,53 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
-{{!-- Feel free to remove this! --}}
+<h1>Organisations</h1>
 
-{{outlet}}
+<div class="organisations">
+  {{#each @model as |organisation|}}
+    <div class="organisation">
+      <h2>{{organisation.name}}</h2>
+
+      Members:
+
+      <ul class="members">
+        {{#each organisation.members as |member|}}
+          <li class={{if (eq member.id organisation.createdBy.id) "creator"}}>
+            {{member.firstName}} {{member.lastName}}
+            {{#if (eq member.id organisation.createdBy.id)}}
+              (creator)
+            {{/if}}
+          </li>
+        {{/each}}
+      </ul>
+
+      Projects:
+
+      <div class="projects">
+        {{#each organisation.projects as |project|}}
+          <div class="project">
+            <h3>{{project.name}}</h3>
+
+            Project members:
+
+            <ul class="members">
+              {{#each project.members as |member|}}
+                <li class={{if (eq member.id project.createdBy.id) "creator"}}>
+                  {{member.firstName}} {{member.lastName}}
+                  {{#if (eq member.id project.createdBy.id)}}
+                    (creator)
+                  {{/if}}
+                </li>
+              {{/each}}
+            </ul>
+
+            Nodes:
+
+            <div class="nodes">
+              {{#each project.nodes as |node|}}
+                <ProjectNode @node={{node}} />
+              {{/each}}
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  {{/each}}
+</div>

@@ -1,0 +1,14 @@
+<div class="node">
+  {{@node.name}} -
+  <small>
+    Created by {{@node.createdBy.firstName}}
+  </small>
+
+  {{#if @node.childNodes}}
+    <div class="children">
+      {{#each @node.childNodes as |node|}}
+        <ProjectNode @node={{node}} />
+      {{/each}}
+    </div>
+  {{/if}}
+</div>

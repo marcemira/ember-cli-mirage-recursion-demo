@@ -1,0 +1,91 @@
+/**
+* * Very basic styles for demo porpoises.
+**/
+
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+h1 {
+  width: 100%;
+  font-size: 250%;
+  margin: 3rem 0;
+  text-align: center;
+}
+
+.organisations {
+  display: flex;
+  width: 100%;
+}
+
+.members li {
+  line-height: 1.5rem;
+}
+
+.organisation {
+  width: 100%;
+  padding: 0 1.5rem;
+  max-width: calc(100% / 3 - 2rem);
+  border-right: 1px solid gainsboro;
+
+  &:last-child {
+    border-right: none;
+  }
+
+  h2 {
+    font-size: 150%;
+    padding: 0.5rem 0;
+    margin: 0 0 1rem;
+    width: 100%;
+    display: block;
+    border-bottom: 1px solid  gainsboro;
+    text-transform: capitalize;
+  }
+
+  .creator {
+    font-weight: 600;
+    color: darkgoldenrod
+  }
+
+  .project {
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 0.25rem;
+    background-color: whitesmoke;
+    box-shadow: 0 0.15rem 0.15rem rgba(0, 0, 0, 0.1);
+
+    h3 {
+      padding: 0.5rem 0;
+      margin: 0 0 1rem;
+      width: 100%;
+      display: block;
+      border-bottom: 1px solid #808080;
+      text-transform: capitalize;
+    }
+  }
+
+  .nodes {
+    display: flex;
+    flex-direction: column;
+    text-transform: capitalize;
+
+    .node {
+      display: flex;
+      flex-direction: column;
+      padding: 0.5rem;
+      background: lightblue;
+      margin: 0.25rem;
+      display: inline-block;
+      border-radius: 0.25rem;
+
+      .children {
+        margin: 0.5rem 0.25rem 0.25rem;
+        background-color: lightseagreen;
+        padding: 0.25rem;
+        display: flex;
+        flex-direction: column;
+        border-radius: 0.25rem;
+      }
+    }
+  }
+}
