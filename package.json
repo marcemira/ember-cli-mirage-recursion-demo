@@ -1,11 +1,11 @@
 {
-  "name": "test-app",
-  "version": "0.0.0",
+  "name": "ember-cli-mirage-recursion-demo",
+  "version": "1.0.0",
   "private": true,
-  "description": "Small description for test-app goes here",
-  "repository": "",
+  "description": "Example app for recursion on mirage / ember-data + folder tree addon visualization",
+  "repository": "git@github.com:marcemira/ember-cli-mirage-recursion-demo.git",
   "license": "MIT",
-  "author": "",
+  "author": "Marcelo Mira",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -18,6 +18,9 @@
     "start": "ember serve",
     "test": "npm-run-all lint:* test:*",
     "test:ember": "ember test"
+  },
+  "dependencies": {
+    "ember-node-tree": "file:../ember-node-tree/"
   },
   "devDependencies": {
     "@ember/jquery": "^1.1.0",

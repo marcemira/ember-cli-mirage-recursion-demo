@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'test-app',
+    modulePrefix: 'ember-cli-mirage-recursion-demo',
     environment,
     rootURL: '/',
     locationType: 'auto',

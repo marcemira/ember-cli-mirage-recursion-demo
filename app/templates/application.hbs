@@ -40,11 +40,7 @@
 
             Nodes:
 
-            <div class="nodes">
-              {{#each project.nodes as |node|}}
-                <ProjectNode @node={{node}} />
-              {{/each}}
-            </div>
+            <NodeTree @nodes={{project.nodes}} />
           </div>
         {{/each}}
       </div>
