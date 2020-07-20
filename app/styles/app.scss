@@ -63,29 +63,4 @@ h1 {
       text-transform: capitalize;
     }
   }
-
-  .nodes {
-    display: flex;
-    flex-direction: column;
-    text-transform: capitalize;
-
-    .node {
-      display: flex;
-      flex-direction: column;
-      padding: 0.5rem;
-      background: lightblue;
-      margin: 0.25rem;
-      display: inline-block;
-      border-radius: 0.25rem;
-
-      .children {
-        margin: 0.5rem 0.25rem 0.25rem;
-        background-color: lightseagreen;
-        padding: 0.25rem;
-        display: flex;
-        flex-direction: column;
-        border-radius: 0.25rem;
-      }
-    }
-  }
 }

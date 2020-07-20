@@ -40,7 +40,15 @@
 
             Nodes:
 
-            <NodeTree @nodes={{project.nodes}} />
+            <NodeActions
+              @nodes={{project.nodes}}
+              @onSelection={{fn (mut this.selectedNode)}}
+              as |actions|>
+              <NodeTree
+                @nodes={{actions.nodes}}
+                @onSelection={{actions.onSelection}}
+                @icon="nodes" />
+            </NodeActions>
           </div>
         {{/each}}
       </div>
