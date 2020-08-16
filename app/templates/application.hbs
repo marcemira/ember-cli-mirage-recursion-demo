@@ -43,6 +43,8 @@
             <NodeActions
               @nodes={{project.nodes}}
               @onSelection={{fn (mut this.selectedNode)}}
+              @onBeforeRemove={{this.confirmRemove}}
+              @onRemove={{this.removeNode}}
               as |actions|>
               <NodeTree
                 @nodes={{actions.nodes}}
