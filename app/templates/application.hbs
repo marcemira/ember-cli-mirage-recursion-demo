@@ -45,6 +45,7 @@
               @onSelection={{fn (mut this.selectedNode)}}
               @onBeforeRemove={{this.confirmRemove}}
               @onRemove={{this.removeNode}}
+              @additionalActions={{this.additionalActions}}
               as |actions|>
               <NodeTree
                 @nodes={{actions.nodes}}

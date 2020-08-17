@@ -5511,10 +5511,10 @@ ember-named-arguments-polyfill@^1.0.0:
     ember-cli-babel "^6.6.0"
     ember-cli-version-checker "^2.1.2"
 
-ember-node-tree@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/ember-node-tree/-/ember-node-tree-0.0.1.tgz#c25606eebd8476507e20c813eee48e2667608ede"
-  integrity sha512-5gplnooq1MojWLN0QF3wenQgKpjWffshUQlqUKEpPXrgy0gT7hgJ4l59y0dyF/Rr5pgtY3v63c/P+unrjMgfBw==
+ember-node-tree@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/ember-node-tree/-/ember-node-tree-0.1.0.tgz#ed09d44bb692e8f1fc6c124a9914514f755c523d"
+  integrity sha512-tiKJKa/IjV115mM8ahBtmPp/mlr3v+nnprUtUCJM6R2wjzeLVm2AyJhq3alrrChV/4jcJ7LfqplmLRqc1eSSqg==
   dependencies:
     ember-animated "^0.10.1"
     ember-arg-types "^0.2.1"
