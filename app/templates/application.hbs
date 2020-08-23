@@ -46,6 +46,7 @@
               @onBeforeRemove={{this.confirmRemove}}
               @onRemove={{this.removeNode}}
               @additionalActions={{this.additionalActions}}
+              @customOrder={{this.customOrder}}
               as |actions|>
               <NodeTree
                 @nodes={{actions.nodes}}

@@ -8,19 +8,28 @@ export default class ApplicationController extends Controller {
 
   additionalActions = [
     {
-      name: 'Duplicate',
+      title: 'Duplicate',
+      name: 'duplicate',
       icon: 'duplicate',
+      order: 3,
       action: this.duplicateNode,
     },
     {
-      name: 'Rename',
+      title: 'Rename',
+      name: 'rename',
       icon: 'rename',
+      order: 4,
       action: this.renameNode,
     },
   ];
 
   @action
-  createNode() {
+  customOrder = {
+    add: 1,
+    duplicate: 2,
+    rename: 3,
+    remove: 4,
+  };
 
   }
 
