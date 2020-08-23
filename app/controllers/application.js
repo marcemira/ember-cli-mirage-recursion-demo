@@ -23,7 +23,6 @@ export default class ApplicationController extends Controller {
     },
   ];
 
-  @action
   customOrder = {
     add: 1,
     duplicate: 2,
@@ -31,6 +30,10 @@ export default class ApplicationController extends Controller {
     remove: 4,
   };
 
+  @action
+  async createNode() {
+    const name = prompt('Input a name for your new node');
+    return this.store.createRecord('node', { name });
   }
 
   @action

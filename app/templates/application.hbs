@@ -43,6 +43,7 @@
             <NodeActions
               @nodes={{project.nodes}}
               @onSelection={{fn (mut this.selectedNode)}}
+              @onBeforeAdd={{this.createNode}}
               @onBeforeRemove={{this.confirmRemove}}
               @onRemove={{this.removeNode}}
               @additionalActions={{this.additionalActions}}
