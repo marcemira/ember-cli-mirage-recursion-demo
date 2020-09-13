@@ -1,0 +1,29 @@
+{{#if this.promptService.displayPrompt}}
+  {{#if this.prompt.component}}
+    {{#let this.prompt.component as |PromptComponent|}}
+      <PromptComponent
+        @prompt={{this.prompt}}
+        @data={{this.prompt.data}}
+      />
+    {{/let}}
+  {{else}}
+    <BsModal
+      @onSubmit={{this.promptService.accept}}
+      @onHide={{this.promptService.cancel}}
+      as |Modal|>
+      <Modal.header>
+        <h4 class="modal-title">
+          <i class="glyphicon glyphicon-alert"></i>
+          {{this.prompt.title}}
+        </h4>
+      </Modal.header>
+      <Modal.body>
+        {{this.prompt.body}}
+      </Modal.body>
+      <Modal.footer>
+        <BsButton @onClick={{action Modal.close}} @type="danger">Oh no, forget it!</BsButton>
+        <BsButton @onClick={{action Modal.submit}} @type="success">Yeah!</BsButton>
+      </Modal.footer>
+    </BsModal>
+  {{/if}}
+{{/if}}

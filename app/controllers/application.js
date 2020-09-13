@@ -5,6 +5,7 @@ import { debug } from '@ember/debug';
 
 export default class ApplicationController extends Controller {
   @service store;
+  @service prompt;
 
   additionalActions = [
     {
@@ -32,13 +33,26 @@ export default class ApplicationController extends Controller {
 
   @action
   async createNode() {
-    const name = prompt('Input a name for your new node');
-    return this.store.createRecord('node', { name });
+    const prompt = await this.prompt.show({
+      title: `Add new Node`
+    }, 'prompt-name');
+
+    if (prompt.accepted) {
+      return this.store.createRecord('node', {
+        name: prompt.response.name
+      });
+    }
+
+    return false;
   }
 
   @action
-  confirmRemove(node) {
-    return confirm(`You are about to remove ${node.name}, do you want to continue?`);
+  async confirmRemove(node) {
+    const response = await this.prompt.show({
+      body: `You are about to remove ${node.name}, do you want to continue?`
+    });
+
+    return response.accepted;
   }
 
   @action

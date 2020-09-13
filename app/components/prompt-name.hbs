@@ -1,0 +1,24 @@
+<BsModal
+  @onSubmit={{fn @prompt.accept (hash name=this.name)}}
+  @onHide={{@prompt.cancel}}
+  as |Modal|>
+  <Modal.header>
+    <h4 class="modal-title">
+      <i class="glyphicon glyphicon-alert"></i>
+      {{@prompt.title}}
+    </h4>
+  </Modal.header>
+  <Modal.body>
+    <label for="name">Name</label>
+    <Input
+      id="name"
+      type="text"
+      @value={{this.name}}
+      {{on "input" (action (mut this.name) value="target.value")}}
+    />
+  </Modal.body>
+  <Modal.footer>
+    <BsButton @onClick={{action Modal.close}} @type="danger">Cancel</BsButton>
+    <BsButton @onClick={{action Modal.submit}} @type="success">Create</BsButton>
+  </Modal.footer>
+</BsModal>
