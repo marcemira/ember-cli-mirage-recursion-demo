@@ -1,0 +1,78 @@
+<form class="form-inline mr-4 d-none d-md-flex w-100">
+  <div class="w-100 input-group input-group-flush input-group-merge">
+    <Input
+      @value={{this.query}}
+      @escape-press={{fn (mut this.showResults) false}}
+      @focus-in={{queue this.fetchResults (fn (mut this.showResults) true)}}
+      @focus-out={{fn (mut this.showResults) false}}
+      {{on "input" this.checkShowResults}}
+      type="search"
+      class="form-control form-control-prepended dropdown-toggle list-search"
+      data-toggle="dropdown"
+      placeholder="Search"
+      aria-label="Search"
+      autofocus="autofocus"
+      autocomplete="off"
+    />
+    <div class="input-group-prepend">
+      <div class="input-group-text">
+        <i class="fe fe-search"></i>
+      </div>
+    </div>
+
+    {{#if this.filteredList}}
+      <div
+        class={{concat "dropdown-menu dropdown-menu-card" (if this.showResults " show")}}>
+        <div class="card-body">
+          <div class="list-group list-group-flush list-group-focus list my-n3">
+            {{#each this.filteredList as |row|}}
+              <Link
+                @route="project"
+                @models={{array row}} as |l|>
+                <a
+                  href={{l.url}}
+                  class="list-group-item"
+                  {{on "click" (queue (fn (mut this.showResults) false) l.transitionTo)}}>
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                      <div class="avatar">
+                        <EmberInitials
+                          @name={{row.name}}
+                          @image={{row.avatar.uri}}
+                          @defaultName="?"
+                          @fontFamily="Cerebri Sans, sans-serif"
+                          class="avatar-img rounded"
+                        />
+                      </div>
+                    </div>
+                    <div class="col ml-n2">
+                      <h4 class="text-body text-focus mb-1 name">
+                        {{row.name}}
+                      </h4>
+                      <p class="small text-muted mb-0">
+                        <span class="fe fe-clock"></span>
+                        <time datetime="2018-05-24">Updated 2hr ago</time>
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </Link>
+            {{else}}
+              <div class="list-group-item">
+                <p></p>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    {{/if}}
+  </div>
+</form>
+
+{{#if this.showResults}}
+  <div
+    class="blur-overlay"
+    role="button"
+    {{on "click" (fn (mut this.showResults) false)}}>
+  </div>
+{{/if}}

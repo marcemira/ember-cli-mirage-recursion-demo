@@ -25,5 +25,6 @@ export default function() {
   */
 
   this.resource('organisation');
+  this.resource('project');
   this.resource('node');
 }
