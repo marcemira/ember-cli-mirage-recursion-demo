@@ -31,6 +31,20 @@ export default class ApplicationController extends Controller {
     remove: 4,
   };
 
+  get darkTheme () {
+    return {
+      primaryColor: '#2c7be5',
+      textColor: '#FFF',
+      uiColor: '#152e4d',
+      uiBackground: '#12263f',
+      disabledTextColor: 'rgba(255,255,255, 0.5)',
+      selectedBackground: 'rgba(44, 123, 229, 0.5)',
+      selectedTextColor: '#FFF',
+      hiddenBackground: '',
+      hiddenTextColor: 'rgba(255,255,255, 0.5)',
+    };
+  }
+
   @action
   async createNode() {
     const prompt = await this.prompt.show({

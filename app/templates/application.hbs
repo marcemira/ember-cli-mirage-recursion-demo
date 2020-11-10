@@ -3,7 +3,7 @@
 <h1>Organisations</h1>
 
 <div class="organisations">
-  {{#each @model as |organisation|}}
+  {{#each @model as |organisation index|}}
     <div class="organisation">
       <h2>{{organisation.name}}</h2>
 
@@ -41,22 +41,45 @@
             </ul>
 
             Nodes:
-
-            <NodeActions
-              @nodes={{project.nodes}}
-              @onSelection={{fn (mut this.selectedNode)}}
-              @onBeforeAdd={{this.createNode}}
-              @onBeforeRemove={{this.confirmRemove}}
-              @onRemove={{this.removeNode}}
-              @additionalActions={{this.additionalActions}}
-              @customOrder={{this.customOrder}}
-              as |actions|>
+            {{#if (eq index 1)}}
               <NodeTree
-                @nodes={{actions.nodes}}
-                @actionsAPI={{actions.API}}
-                @expandToDepth={{4}}
-                @icon="nodes" />
-            </NodeActions>
+                @nodes={{project.nodes}}
+                @onSelection={{fn (mut this.selectedNode)}}
+                @theme={{this.darkTheme}}
+                as |nt|
+              >
+                <nt.Actions
+                  @onBeforeAdd={{this.createNode}}
+                  @onBeforeRemove={{this.confirmRemove}}
+                  @onRemove={{this.removeNode}}
+                  @additionalActions={{this.additionalActions}}
+                  as |na|>
+                  <na.Action @name="add" />
+                  <na.Action @name="remove" />
+                </nt.Actions>
+                <nt.Tree
+                  @expandToDepth={{this.depth}}
+                  @customNodeComponent="custom-node"
+                  @defaultIcon="nodes"
+                />
+              </NodeTree>
+            {{else}}
+              <NodeTree
+                @nodes={{project.nodes}}
+                @onSelection={{fn (mut this.selectedNode)}}
+                as |nt|
+              >
+                <nt.Actions
+                  @onBeforeAdd={{this.createNode}}
+                  @onBeforeRemove={{this.confirmRemove}}
+                  @onRemove={{this.removeNode}}
+                  @additionalActions={{this.additionalActions}} />
+                <nt.Tree
+                  @expandToDepth={{this.depth}}
+                  @defaultIcon="nodes"
+                />
+              </NodeTree>
+            {{/if}}
           </div>
         {{/each}}
       </div>
